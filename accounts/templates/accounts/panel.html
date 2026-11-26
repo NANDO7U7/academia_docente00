@@ -1,0 +1,11 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Panel{% endblock %}
+
+{% block content %}
+    <h1>{{ user.get_username }}</h1>
+    <form method="post" action="{% url 'accounts:logout' %}">
+        {% csrf_token %}
+        <button type="submit">Cerrar sesión</button>
+    </form>
+{% endblock %}

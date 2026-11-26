@@ -1,0 +1,33 @@
+{% extends "accounts/base.html" %}
+{% load i18n %}
+
+{% block title %}Crear cuenta{% endblock %}
+
+{% block content %}
+    <h1>Crear cuenta</h1>
+    {% language "es" %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="campo">
+                <label for="{{ form.username.id_for_label }}">Usuario</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+            <div class="campo">
+                <label for="{{ form.password1.id_for_label }}">Contraseña</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+            <div class="campo">
+                <label for="{{ form.password2.id_for_label }}">Confirmar contraseña</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+
+            <button type="submit">Crear cuenta</button>
+        </form>
+    {% endlanguage %}
+    <p class="enlace"><a href="{% url 'accounts:login' %}">Iniciar sesión</a></p>
+{% endblock %}
