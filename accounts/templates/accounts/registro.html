@@ -15,6 +15,14 @@
                 {{ form.username }}
                 {{ form.username.errors }}
             </div>
+            <!-- NUEVO -->
+            <div class="campo">
+                <label for="id_email">Correo electrónico</label>
+                <input type="email" name="email" id="id_email" placeholder="nombre@ejemplo.com"
+                       autocomplete="email" value="{{ request.POST.email }}" required
+                       {% if email_errors %}aria-invalid="true" aria-describedby="id_email_error"{% endif %}>
+                {{ email_errors }}
+            </div>
             <div class="campo">
                 <label for="{{ form.password1.id_for_label }}">Contraseña</label>
                 {{ form.password1 }}
